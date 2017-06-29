@@ -1,29 +1,66 @@
-![giuseppe](https://cloud.githubusercontent.com/assets/292951/14691860/f363e562-0753-11e6-89df-aab95645084f.png)
+# giuseppe request response plugin
 
-giuseppe [Italian: dʒuˈzɛppe] is a controller routing system for [Express](http://expressjs.com/) using [TypeScript](https://www.typescriptlang.org/) 
-decorators and annotations named after the great Italian componist Giuseppe Verdi. Like Verdi, it composes things, 
-but not a great piece of musical history! We compose routes for you. giuseppe is dedicated to
-[Express](http://expressjs.com/) and depends on it. We were tired of writing all the route registrations by ourselves.
+This is a plugin for [giuseppe](http://giuseppe.smartive.ch) which adds a `@Req` and a `@Res` parameter definition.
+Those definitions do inject the corresponding express object. `@Req` does inject the express request and `@Res` the
+express response object. So you have full control over what you do in your routes.
+
+Note that the `@Res` parameter has the `canHandleResponse` flag set to `true`. Which means you need to actually
+handle the response in the route. Giuseppe won't run the result of your method through the return type handler.
 
 ##### A bunch of badges
 
-[![Build Status](https://travis-ci.org/smartive/giuseppe.svg)](https://travis-ci.org/smartive/giuseppe)
-[![npm](https://img.shields.io/npm/v/giuseppe.svg?maxAge=3600)](https://www.npmjs.com/package/giuseppe)
-[![Coverage status](https://img.shields.io/coveralls/smartive/giuseppe.svg?maxAge=3600)](https://coveralls.io/github/smartive/giuseppe)
+[![Build Status](https://travis-ci.org/smartive/giuseppe-reqres-plugin.svg)](https://travis-ci.org/smartive/giuseppe-reqres-plugin)
+[![npm](https://img.shields.io/npm/v/giuseppe-reqres-plugin.svg?maxAge=3600)](https://www.npmjs.com/package/giuseppe-reqres-plugin)
+[![Coverage status](https://img.shields.io/coveralls/smartive/giuseppe-reqres-plugin.svg?maxAge=3600)](https://coveralls.io/github/smartive/giuseppe-reqres-plugin)
 
 ## Installation
 
 To install this package, simply run
 
-[![NPM](https://nodei.co/npm/giuseppe.png?downloads=true&stars=true)](https://nodei.co/npm/giuseppe/)
+[![NPM](https://nodei.co/npm/giuseppe-reqres-plugin.png?downloads=true&stars=true)](https://nodei.co/npm/giuseppe-reqres-plugin/)
 
-Or use the yeoman generator which we created @ [generator-giuseppe](http://giuseppe-generator.smartive.ch/).
-If you want to create a plugin for giuseppe, use the other yeoman generator @ 
-[generator-giuseppe-plugin](http://giuseppe-plugin-generator.smartive.ch/)
+## How to use
 
-## Documentation and examples
+This is an example for a request injection:
+```typescript
+import { Giuseppe, Controller, Get } from 'giuseppe';
+import { GiuseppeReqResPlugin, Req } from 'giuseppe-reqres-plugin';
+import { Request } from 'express';
 
-All of our documentation and examples are available on [giuseppe.smartive.ch](http://giuseppe.smartive.ch).
+@Controller()
+class Ctrl{
+    @Get()
+    public func(@Req() request: Request): string {
+        return request.get('Accept-Language'); // just return the string value of the header Accept-Language
+    }
+}
+
+const app = new Giuseppe();
+app.registerPlugin(new GiuseppeReqResPlugin());
+app.start();
+```
+
+This is an example for a response injection:
+```typescript
+import { Giuseppe, Controller, Get } from 'giuseppe';
+import { GiuseppeReqResPlugin, Res } from 'giuseppe-reqres-plugin';
+import { Response } from 'express';
+
+@Controller()
+class Ctrl{
+    @Get()
+    public func(@Res() response: Response): void {
+        request
+            .send('Foobar')
+            .status('404')
+            .end();
+    }
+}
+
+const app = new Giuseppe();
+app.registerPlugin(new GiuseppeReqResPlugin());
+app.start();
+```
 
 ## Changelog
 

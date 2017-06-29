@@ -36,5 +36,5 @@ exec(`git commit -m "Update package.json to v${versionNumber}"`);
 console.log('Update API documentation');
 
 exec('npm run typedoc');
-exec('git add ./docs/api');
-exec('git commit -am "Update api documentation"');
+exec('git add ./docs');
+exec('git commit -am "Update documentation"');

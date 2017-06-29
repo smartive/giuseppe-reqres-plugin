@@ -1,6 +1,6 @@
 {
   "name": "giuseppe-reqres-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "giuseppe plugin that adds @Req and @Res from v1 back.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -35,6 +35,7 @@
   "bugs": {
     "url": "https://github.com/smartive/giuseppe-reqres-plugin/issues"
   },
+  "homepage": "https://smartive.github.io/giuseppe-reqres-plugin/",
   "dependencies": {
     "giuseppe": "^2.0.0"
   },
