@@ -13,6 +13,7 @@ handle the response in the route. Giuseppe won't run the result of your method t
 [![npm](https://img.shields.io/npm/v/giuseppe-reqres-plugin.svg?maxAge=3600)](https://www.npmjs.com/package/giuseppe-reqres-plugin)
 [![Coverage status](https://img.shields.io/coveralls/smartive/giuseppe-reqres-plugin.svg?maxAge=3600)](https://coveralls.io/github/smartive/giuseppe-reqres-plugin)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Greenkeeper badge](https://badges.greenkeeper.io/smartive/giuseppe-reqres-plugin.svg)](https://greenkeeper.io/)
 
 ## Installation
 
