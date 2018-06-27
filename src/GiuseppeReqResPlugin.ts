@@ -13,7 +13,7 @@ import { GiuseppeResponseParameter } from './Res';
 /**
  * Giuseppe plugin that adds a @Req and @Res parameter decorator for routes. This parameter do inject the express
  * request or express response objects.
- * 
+ *
  * @export
  * @class GiuseppeReqResPlugin
  * @implements {GiuseppePlugin}
@@ -29,7 +29,7 @@ export class GiuseppeReqResPlugin implements GiuseppePlugin {
         return this.constructor.name;
     }
 
-    initialize(): void {
+    public initialize(): void {
         this.parameterDefinitions.push(GiuseppeRequestParameter);
         this.parameterDefinitions.push(GiuseppeResponseParameter);
     }
