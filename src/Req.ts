@@ -3,15 +3,15 @@ import { Giuseppe, ParameterDefinition } from 'giuseppe';
 
 /**
  * Parameter decorator. Creates a parameter definition that injects the express js request object.
- * 
+ *
  * @export
- * @returns {ParameterDecorator} 
+ * @returns {ParameterDecorator}
  */
 export function Req(): ParameterDecorator {
-    return (target: Object, propertyKey: string, parameterIndex: number) =>
+    return (target: Object, propertyKey: string | symbol, parameterIndex: number) =>
         Giuseppe.registrar.registerParameter(
             target,
-            propertyKey,
+            propertyKey.toString(),
             new GiuseppeRequestParameter(parameterIndex),
         );
 }
@@ -19,7 +19,7 @@ export function Req(): ParameterDecorator {
 /**
  * Implementation of the request parameter definition. Does implement name and type statically, returns
  * the expressJS request object.
- * 
+ *
  * @export
  * @class GiuseppeRequestParameter
  * @implements {ParameterDefinition}

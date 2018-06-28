@@ -5,15 +5,15 @@ import { Giuseppe, ParameterDefinition } from 'giuseppe';
  * Parameter decorator. Creates a parameter definition that injects the express js response object.
  * Note that when you inject this parameter, you need to handle the response for yourself. The field "canHandleResponse"
  * is set, so giuseppe won't run the result of the function through the return type handler.
- * 
+ *
  * @export
- * @returns {ParameterDecorator} 
+ * @returns {ParameterDecorator}
  */
 export function Res(): ParameterDecorator {
-    return (target: Object, propertyKey: string, parameterIndex: number) =>
+    return (target: Object, propertyKey: string | symbol, parameterIndex: number) =>
         Giuseppe.registrar.registerParameter(
             target,
-            propertyKey,
+            propertyKey.toString(),
             new GiuseppeResponseParameter(parameterIndex),
         );
 }
@@ -21,7 +21,7 @@ export function Res(): ParameterDecorator {
 /**
  * Implementation of the request parameter definition. Does implement name and type statically, returns
  * the expressJS response object.
- * 
+ *
  * @export
  * @class GiuseppeResponseParameter
  * @implements {ParameterDefinition}
