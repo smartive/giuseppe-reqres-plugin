@@ -45,7 +45,7 @@
     "@types/jest": "^23.1.2",
     "del-cli": "^1.1.0",
     "jest": "^23.2.0",
-    "semantic-release": "^15.6.0",
+    "semantic-release": "^15.9.15",
     "ts-jest": "^23.0.0",
     "tslint": "^5.10.0",
     "tsutils": "^2.27.1",
