@@ -49,7 +49,7 @@
     "ts-jest": "^23.0.0",
     "tslint": "^5.10.0",
     "tsutils": "^2.27.1",
-    "typedoc": "^0.11.1",
+    "typedoc": "^0.16.9",
     "typescript": "^2.9.2"
   }
 }
